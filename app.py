@@ -282,7 +282,6 @@ def auto_optimize_local_battery(
 
 st.set_page_config(page_title="Hybrid Solar + Battery Storage Analysis", layout="wide")
 st.title("Hybrid Solar + Battery Storage Analysis")
-st.caption("Perfect-foresight dispatch using 2025 LD.E_CAMBRG13.8 hourly LMP and your local solar shape (Local Time: EPT).")
 
 try:
     base_df = load_base_data()
@@ -439,8 +438,7 @@ with top_left:
 with top_right:
     st.markdown(
         "**Analysis Notes**\n"
-        "- A simple analysis explores solar-plus-storage returns based on real-time energy pricing only.\n"
-        "- The algorithm can perform pricing arbitrage by storing excess solar, shifting solar output, and using intra-day price divergences.\n"
+        "- The algorithm performs pricing arbitrage by storing excess solar, shifting solar output, and using intra-day price divergences.\n"
         "- The dispatch uses perfect foresight for both prices and solar production, so results represent an upper-bound performance ceiling.\n"
         "- The solar profile comes from Elliott's personal house production in 2025, then is scaled to grid-level deployment size.\n"
         "- The pricing reference is a local ISO-NE node in Cambridge, MA: `LD.E_CAMBRG13.8`.\n"
@@ -542,7 +540,7 @@ def add_mode_shading(frame: pd.DataFrame, mode: str, color: str) -> None:
         fig.add_vrect(x0=s, x1=e, fillcolor=color, opacity=0.12, line_width=0, row=2, col=1)
 
 
-add_mode_shading(week_df, "delivering", "#ffd54f")
+add_mode_shading(week_df, "delivering", "#a5d6a7")
 add_mode_shading(week_df, "taking", "#e57373")
 
 hourly_net = week_df["hourly_revenue_with_battery"].to_numpy()
