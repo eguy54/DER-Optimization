@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+*.pyc
+data/raw/isone_rt_lmp_2025/
+data/processed/isone_rt_lmp_hourly_2025.csv.gz
